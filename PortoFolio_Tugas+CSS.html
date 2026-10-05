@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Dyka Hatawa">
+    <meta name="description" content="Halaman profil Dyka Hatawa - Tugas IFB-211 Pemrograman Web BB">
+    <title>Profil Saya - Dyka Hatawa</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== VARIABEL WARNA ===== */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --accent: #f59e0b;
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --text: #1e293b;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --radius: 16px;
+            --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+        }
+
+        /* ===== RESET & DASAR ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        /* ===== NAVBAR ===== */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--muted);
+        }
+
+        .nav-links a:hover {
+            background: #eff6ff;
+            color: var(--primary);
+        }
+
+        /* ===== HERO / HEADER ===== */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #7c3aed 100%);
+            color: #fff;
+            padding: 80px 20px 120px;
+        }
+
+        .hero {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .hero figure {
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .hero img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid rgba(255, 255, 255, 0.35);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .hero figcaption {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            opacity: 0.85;
+        }
+
+        .hero-text .badge {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.2);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h1 span {
+            color: var(--accent);
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 520px;
+        }
+
+        .hero-buttons {
+            margin-top: 26px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 26px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: var(--primary);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-primary:hover {
+            color: var(--primary-dark);
+        }
+
+        .btn-outline {
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            color: #fff;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+        }
+
+        /* ===== KONTEN UTAMA ===== */
+        main {
+            max-width: 1100px;
+            margin: -70px auto 0;
+            padding: 0 20px 60px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        section {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+        }
+
+        section.full {
+            grid-column: 1 / -1;
+        }
+
+        section h2 {
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+            position: relative;
+        }
+
+        section h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        section p {
+            color: var(--muted);
+        }
+
+        /* ===== TABEL ===== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px 6px;
+            text-align: left;
+            vertical-align: top;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        tr:last-child th,
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        th {
+            width: 42%;
+            font-weight: 500;
+            color: var(--muted);
+        }
+
+        td.sep {
+            width: 16px;
+            color: var(--muted);
+        }
+
+        td {
+            font-weight: 500;
+        }
+
+        /* ===== TAG KEAHLIAN ===== */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style: none;
+        }
+
+        .tags li {
+            padding: 8px 18px;
+            border-radius: 999px;
+            background: #eff6ff;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid #bfdbfe;
+        }
+
+        /* ===== LIST DENGAN IKON ===== */
+        .list {
+            list-style: none;
+        }
+
+        .list li {
+            padding: 10px 0 10px 32px;
+            position: relative;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .list li:last-child {
+            border-bottom: none;
+        }
+
+        .list li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #eff6ff;
+            color: var(--primary);
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ===== PRESTASI ===== */
+        .achievements {
+            list-style: none;
+            counter-reset: prestasi;
+        }
+
+        .achievements li {
+            counter-increment: prestasi;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            border-radius: 12px;
+            background: #fffbeb;
+            border-left: 4px solid var(--accent);
+            font-weight: 500;
+        }
+
+        .achievements li + li {
+            margin-top: 10px;
+        }
+
+        .achievements li::before {
+            content: "🏆";
+            font-size: 1.4rem;
+        }
+
+        /* ===== KONTAK ===== */
+        address {
+            font-style: normal;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .contact-item {
+            display: block;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: #f8fafc;
+            text-align: center;
+            color: var(--text);
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        a.contact-item:hover {
+            border-color: var(--primary);
+            background: #eff6ff;
+            color: var(--text);
+        }
+
+        .contact-item .icon {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .contact-item .label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-item .value {
+            display: block;
+            font-weight: 600;
+            word-break: break-word;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #93c5fd;
+            display: inline-block;
+            margin-top: 6px;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 860px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .hero-text p {
+                margin: 0 auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            main {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 520px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero img {
+                width: 170px;
+                height: 170px;
+            }
+
+            .nav-inner {
+                justify-content: center;
+            }
+
+            section {
+                padding: 22px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGASI ===== -->
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="logo">Dyka<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#biodata">Biodata</a></li>
+                <li><a href="#pendidikan">Pendidikan</a></li>
+                <li><a href="#keahlian">Keahlian</a></li>
+                <li><a href="#prestasi">Prestasi</a></li>
+                <li><a href="#organisasi">Organisasi</a></li>
+                <li><a href="#hobi">Hobi</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== HEADER / HERO ===== -->
+    <header>
+        <div class="hero">
+            <!-- Foto Profil -->
+            <figure>
+                <img src="Foto Google Almet.jpeg" alt="Foto profil Dyka Hatawa" width="220" height="220">
+                <figcaption>Mahasiswa Teknik Informatika</figcaption>
+            </figure>
+
+            <div class="hero-text">
+                <span class="badge">IFB-211 PEMROGRAMAN WEB BB</span>
+                <h1>Halo, saya <span>Dyka Hatawa</span></h1>
+                <p>Mahasiswa Teknik Informatika ITENAS angkatan 2025 yang senang belajar hal baru di dunia pemrograman.</p>
+                <div class="hero-buttons">
+                    <a href="#kontak" class="btn btn-primary">Hubungi Saya</a>
+                    <a href="#tentang" class="btn btn-outline">Tentang Saya</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== KONTEN UTAMA ===== -->
+    <main>
+
+        <!-- Tentang Saya -->
+        <section id="tentang" class="full">
+            <h2>Tentang Saya</h2>
+            <p>Saya adalah seorang pekerja keras dan berdedikasi yang selalu bersedia belajar hal-hal baru dan meningkatkan keterampilan saya.</p>
+        </section>
+
+        <!-- Biodata -->
+        <section id="biodata">
+            <h2>Biodata</h2>
+            <table>
+                <tr>
+                    <th scope="row">Nama</th>
+                    <td class="sep">:</td>
+                    <td>Dyka Hatawa</td>
+                </tr>
+                <tr>
+                    <th scope="row">Alamat</th>
+                    <td class="sep">:</td>
+                    <td>Jalan Bintang Raya</td>
+                </tr>
+                <tr>
+                    <th scope="row">Asal Kota</th>
+                    <td class="sep">:</td>
+                    <td>Bandung</td>
+                </tr>
+                <tr>
+                    <th scope="row">Tempat, Tanggal Lahir</th>
+                    <td class="sep">:</td>
+                    <td>-</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Pendidikan -->
+        <section id="pendidikan">
+            <h2>Pendidikan</h2>
+            <table>
+                <tr>
+                    <th scope="row">Sekolah / Kampus</th>
+                    <td class="sep">:</td>
+                    <td>ITENAS (Institut Teknologi Nasional)</td>
+                </tr>
+                <tr>
+                    <th scope="row">Jurusan</th>
+                    <td class="sep">:</td>
+                    <td>Teknik Informatika</td>
+                </tr>
+                <tr>
+                    <th scope="row">NRP</th>
+                    <td class="sep">:</td>
+                    <td>152025102</td>
+                </tr>
+                <tr>
+                    <th scope="row">Angkatan</th>
+                    <td class="sep">:</td>
+                    <td>2025</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Keahlian -->
+        <section id="keahlian">
+            <h2>Bahasa Pemrograman</h2>
+            <ul class="tags">
+                <li>Python</li>
+                <li>HTML</li>
+                <li>C++</li>
+            </ul>
+        </section>
+
+        <!-- Prestasi -->
+        <section id="prestasi">
+            <h2>Prestasi</h2>
+            <ol class="achievements">
+                <li>Juara 3 Inovasi dari Kementerian Lingkungan Hidup</li>
+            </ol>
+        </section>
+
+        <!-- Pengalaman Organisasi -->
+        <section id="organisasi">
+            <h2>Pengalaman Organisasi</h2>
+            <ul class="list">
+                <li>Yota</li>
+                <li>Himpunan Mahasiswa Teknik Informatika</li>
+                <li>Trash Rangger Jawa Barat</li>
+            </ul>
+        </section>
+
+        <!-- Hobi -->
+        <section id="hobi">
+            <h2>Hobi</h2>
+            <ul class="list">
+                <li>Membaca buku</li>
+                <li>Menonton film</li>
+                <li>Bermain game</li>
+            </ul>
+        </section>
+
+        <!-- Kontak -->
+        <section id="kontak" class="full">
+            <h2>Kontak</h2>
+            <address class="contact-grid">
+                <a class="contact-item" href="mailto:dhatawaa@gmail.com">
+                    <span class="icon">✉️</span>
+                    <span class="label">Email</span>
+                    <span class="value">dhatawaa@gmail.com</span>
+                </a>
+                <a class="contact-item" href="https://instagram.com/dhatawaa" target="_blank" rel="noopener">
+                    <span class="icon">📷</span>
+                    <span class="label">Instagram</span>
+                    <span class="value">dhatawaa</span>
+                </a>
+                <a class="contact-item" href="https://github.com/dhatawa" target="_blank" rel="noopener">
+                    <span class="icon">💻</span>
+                    <span class="label">GitHub</span>
+                    <span class="value">dhatawa</span>
+                </a>
+                <div class="contact-item">
+                    <span class="icon">💼</span>
+                    <span class="label">LinkedIn</span>
+                    <span class="value">Dyka Hatawa</span>
+                </div>
+            </address>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <p>&copy; 2026 Dyka Hatawa &mdash; Tugas IFB-211 Pemrograman Web BB</p>
+        <p><a href="#">↑ Kembali ke atas</a></p>
+    </footer>
+
+</body>
+</html>
